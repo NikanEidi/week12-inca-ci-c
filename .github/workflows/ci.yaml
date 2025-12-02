@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   run-tests:
-    name: Lint and Test
+    name: Lint, Unit and E2E Tests
     runs-on: ubuntu-latest
 
     steps:
@@ -14,5 +14,13 @@ jobs:
       - name: Install packages
         run: npm ci
 
-      - name: Run ESLint
-        run: npm run lint
+      - name: Run Jest Tests
+        run: npm run ci:test
+
+      - name: Run Cypress Tests
+        uses: cypress-io/github-action@v4
+        env:
+          SECRET_COOKIE_PASSWORD: "2gyZ3GDw3LHZQKDhPmPDL3sjREVRXPr8"
+        with:
+          build: npm run build
+          start: npm start
