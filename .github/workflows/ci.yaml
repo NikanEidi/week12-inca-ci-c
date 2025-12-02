@@ -2,6 +2,10 @@ name: CI
 
 on: [push]
 
+defaults:
+  run:
+    working-directory: "my-app 2"
+
 jobs:
   run-tests:
     name: Lint, Unit and E2E Tests
@@ -12,9 +16,10 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Install packages
-        run: npm ci
+        run: npm install
+        # cannot use npm ci because your repo has NO package-lock.json
 
-      # Comment out if your ESLint fails
+      # Comment if eslint fails
       # - name: Run ESLint
       #   run: npm run lint
 
@@ -26,5 +31,6 @@ jobs:
         env:
           SECRET_COOKIE_PASSWORD: "2gyZ3GDw3LHZQKDhPmPDL3sjREVRXPr8"
         with:
+          working-directory: "my-app 2"
           build: npm run build
           start: npm start
