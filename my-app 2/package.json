@@ -2,15 +2,17 @@
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
-    "test": "jest --watchAll",
-    "cypress": "cypress open",
-    "cypress:headless": "cypress run"
-  },
+"scripts": {
+  "dev": "next dev",
+  "build": "next build",
+  "start": "next start",
+  "lint": "next lint",
+  "test": "jest --watchAll",
+  "ci:test": "jest",
+  "cypress": "cypress open",
+  "cypress:headless": "cypress run"
+},
+
   "dependencies": {
     "iron-session": "^7.0.6",
     "next": "^15.2.4",
